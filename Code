@@ -1,0 +1,39 @@
+
+//
+const int leveler = A0;
+const int leds = 10;
+
+
+void setup() {
+
+  Serial.begin(9600);
+  //loop throgh all LEDs
+  for(int i = 4; i<11; i++){
+    pinMode(i,OUTPUT);
+    
+    }
+  
+}
+
+
+void loop() {
+  
+  int input = analogRead(leveler);
+  //make intervall with input from leveler
+  int interval = map(input,0,1023,0,leds);
+
+  //loop throgh all led and if the interval is bigger then i, then turn i led ON
+  for(int i = 4; i<11 ;i++)
+  {
+    
+    if(interval < i){
+      digitalWrite(i,HIGH);
+      }
+      //else, turn the LED off
+    else{
+      digitalWrite(i,LOW);
+      }
+    
+    }
+
+}
